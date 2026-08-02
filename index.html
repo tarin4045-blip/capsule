@@ -352,15 +352,6 @@ a{text-decoration:none;color:inherit}
   transition:background .2s,transform .1s;
 }
 .send-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}
-.send-btn:disabled{opacity:.65;cursor:wait;transform:none}
-.send-error{
-  display:none;
-  margin-top:-8px;
-  color:#b42318;
-  font-size:13px;
-  line-height:1.5;
-}
-.send-error.show{display:block}
 .send-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* FOOTER TRUST */
@@ -493,6 +484,9 @@ a{text-decoration:none;color:inherit}
   .media-row{flex-direction:column;gap:16px}
 }
 </style>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+<script>UPLOADCARE_PUBLIC_KEY = "754e39cf-047d-45b9-9dd2-7cc079317985";</script>
+<script>UPLOADCARE_LOCALE = "en";</script>
 </head>
 <body>
 
@@ -541,31 +535,35 @@ a{text-decoration:none;color:inherit}
         <div class="media-col">
           <div class="media-label">Add photos <span>(up to 4)</span></div>
           <div class="photo-slots">
-            <div class="photo-slot" id="ps1">
-              <input type="file" accept="image/*" onchange="fillSlot('ps1',this)">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="12" y1="19" x2="12" y2="19.01"/></svg>
-            </div>
-            <div class="photo-slot" id="ps2">
-              <input type="file" accept="image/*" onchange="fillSlot('ps2',this)">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            </div>
-            <div class="photo-slot" id="ps3">
-              <input type="file" accept="image/*" onchange="fillSlot('ps3',this)">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            </div>
-            <div class="photo-slot" id="ps4">
-              <input type="file" accept="image/*" onchange="fillSlot('ps4',this)">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            </div>
+            <input type="hidden"
+              role="uploadcare-uploader"
+              id="photo-uploader"
+              name="photos"
+              data-multiple="true"
+              data-multiple-max="4"
+              data-images-only="true"
+              data-preview-step="true"
+            />
+          </div>
+          <div id="photo-status" style="font-size:12px;color:var(--gray);margin-top:8px;display:none">
+            ✓ Photos uploaded
           </div>
         </div>
 
         <!-- VIDEO -->
         <div class="media-col">
           <div class="media-label">Add a video <span>(up to 45s)</span></div>
-          <div class="video-slot" id="vs1">
-            <input type="file" accept="video/*" onchange="fillVideo(this)">
-            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <div class="video-slot" id="vs1" style="cursor:default">
+            <input type="hidden"
+              role="uploadcare-uploader"
+              id="video-uploader"
+              name="video"
+              data-multiple="false"
+              data-preview-step="true"
+            />
+          </div>
+          <div id="video-status" style="font-size:12px;color:var(--gray);margin-top:8px;display:none">
+            ✓ Video uploaded
           </div>
         </div>
       </div>
@@ -628,11 +626,10 @@ a{text-decoration:none;color:inherit}
       </div>
 
       <!-- SEND BUTTON -->
-      <button class="send-btn" id="sendButton" onclick="sendCapsule()" type="button">
+      <button class="send-btn" onclick="sendCapsule()" type="button">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <span id="sendButtonText">Send My Capsule</span>
+        Send My Capsule
       </button>
-      <p class="send-error" id="sendError" role="alert"></p>
 
       <!-- TRUST -->
       <div class="trust-footer">
@@ -686,12 +683,10 @@ a{text-decoration:none;color:inherit}
   name="capsule" 
   method="POST" 
   data-netlify="true"
-  netlify-honeypot="bot-field"
   id="netlifyForm"
   style="display:none"
 >
   <input type="hidden" name="form-name" value="capsule">
-  <input type="text" name="bot-field" id="nf-bot-field">
   <input type="hidden" name="email" id="nf-email">
   <input type="hidden" name="letter" id="nf-letter">
   <input type="hidden" name="delivery-type" id="nf-delivery-type">
@@ -705,8 +700,8 @@ a{text-decoration:none;color:inherit}
     <div class="success-icon">
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h2>Your capsule is saved 🔒</h2>
-    <p>It has been added to the capsule inbox. This site still needs an email delivery service before scheduled messages can arrive by email.</p>
+    <h2>Your capsule is sealed 🔒</h2>
+    <p>We'll keep it safe and deliver it exactly when you asked. Until then — go live your life.</p>
     <div class="success-detail" id="successDetail"></div>
     <button class="success-close" onclick="closeSuccess()">Done</button>
   </div>
@@ -752,63 +747,27 @@ function togglePrint() {
   document.getElementById('printBox').classList.toggle('checked', printOn);
 }
 
-async function sendCapsule() {
+function sendCapsule() {
   var letter = document.getElementById('letterText').value.trim();
-  var emailInput = document.getElementById('emailInput');
-  var email = emailInput.value.trim();
-  var deliverDate = document.getElementById('deliverDate').value;
-  var sendButton = document.getElementById('sendButton');
-  var sendButtonText = document.getElementById('sendButtonText');
-  var sendError = document.getElementById('sendError');
+  var email = document.getElementById('emailInput').value.trim();
 
   if(!letter) { alert('Please write your letter first.'); return; }
-  if(!email || !emailInput.checkValidity()) { alert('Please enter a valid email address.'); return; }
-  if(!surpriseOn && !deliverDate) {
+  if(!email) { alert('Please enter your email address.'); return; }
+  if(!surpriseOn && !document.getElementById('deliverDate').value) {
     alert('Please choose a delivery date or turn on Surprise me.'); return;
   }
 
   var deliveryText = surpriseOn
     ? 'Delivery: Surprise — sometime in the next 3 months to 2 years'
-    : 'Delivery: ' + new Date(deliverDate + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    : 'Delivery: ' + new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 
   var printText = printOn ? '\nPrint add-on: $5 — physical letter included' : '';
 
-  document.getElementById('nf-email').value = email;
-  document.getElementById('nf-letter').value = letter;
-  document.getElementById('nf-delivery-type').value = surpriseOn ? 'surprise' : 'scheduled';
-  document.getElementById('nf-delivery-date').value = surpriseOn ? 'Random date between 3 months and 2 years' : deliverDate;
-  document.getElementById('nf-print').value = printOn ? 'Yes' : 'No';
+  document.getElementById('successDetail').innerHTML =
+    'Sending to: <strong>' + email + '</strong><br>' +
+    deliveryText + printText;
 
-  sendError.classList.remove('show');
-  sendError.textContent = '';
-  sendButton.disabled = true;
-  sendButtonText.textContent = 'Sealing Capsule...';
-
-  try {
-    var form = document.getElementById('netlifyForm');
-    var response = await fetch('/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(new FormData(form)).toString()
-    });
-
-    if(!response.ok) throw new Error('Submission failed');
-
-    var successDetail = document.getElementById('successDetail');
-    successDetail.textContent = '';
-    successDetail.append('Sending to: ');
-    var emailStrong = document.createElement('strong');
-    emailStrong.textContent = email;
-    successDetail.append(emailStrong, document.createElement('br'), deliveryText + printText);
-
-    document.getElementById('successOverlay').classList.add('show');
-  } catch(error) {
-    sendError.textContent = 'Your capsule was not saved. Please check your connection and try again.';
-    sendError.classList.add('show');
-  } finally {
-    sendButton.disabled = false;
-    sendButtonText.textContent = 'Send My Capsule';
-  }
+  document.getElementById('successOverlay').classList.add('show');
 }
 
 function closeSuccess() {
@@ -839,6 +798,22 @@ function showMain() {
   document.getElementById('mainPage').classList.remove('hide');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+// Uploadcare upload listeners
+document.addEventListener('DOMContentLoaded', function() {
+  var photoWidget = uploadcare.Widget('#photo-uploader');
+  photoWidget.onChange(function(value) {
+    if(value) {
+      document.getElementById('photo-status').style.display = 'block';
+    }
+  });
+  var videoWidget = uploadcare.Widget('#video-uploader');
+  videoWidget.onChange(function(value) {
+    if(value) {
+      document.getElementById('video-status').style.display = 'block';
+    }
+  });
+});
 
 // Set min date to 3 months from today
 var minDate = new Date();
