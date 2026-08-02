@@ -352,6 +352,15 @@ a{text-decoration:none;color:inherit}
   transition:background .2s,transform .1s;
 }
 .send-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.send-btn:disabled{opacity:.65;cursor:wait;transform:none}
+.send-error{
+  display:none;
+  margin-top:-8px;
+  color:#b42318;
+  font-size:13px;
+  line-height:1.5;
+}
+.send-error.show{display:block}
 .send-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* FOOTER TRUST */
@@ -619,20 +628,11 @@ a{text-decoration:none;color:inherit}
       </div>
 
       <!-- SEND BUTTON -->
-      <button class="send-btn" onclick="sendCapsule()" type="button">
+      <button class="send-btn" id="sendButton" onclick="sendCapsule()" type="button">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Send My Capsule
+        <span id="sendButtonText">Send My Capsule</span>
       </button>
-      
-      <!-- Hidden Formspree form -->
-      <form id="formspreeForm" action="https://formspree.io/f/mzdnlyqj" method="POST" style="display:none">
-        <input type="hidden" name="email" id="nf-email">
-        <input type="hidden" name="letter" id="nf-letter">
-        <input type="hidden" name="delivery_type" id="nf-delivery-type">
-        <input type="hidden" name="delivery_date" id="nf-delivery-date">
-        <input type="hidden" name="print_addon" id="nf-print">
-        <button type="submit" id="nf-submit">Submit</button>
-      </form>
+      <p class="send-error" id="sendError" role="alert"></p>
 
       <!-- TRUST -->
       <div class="trust-footer">
@@ -686,10 +686,12 @@ a{text-decoration:none;color:inherit}
   name="capsule" 
   method="POST" 
   data-netlify="true"
+  netlify-honeypot="bot-field"
   id="netlifyForm"
   style="display:none"
 >
   <input type="hidden" name="form-name" value="capsule">
+  <input type="text" name="bot-field" id="nf-bot-field">
   <input type="hidden" name="email" id="nf-email">
   <input type="hidden" name="letter" id="nf-letter">
   <input type="hidden" name="delivery-type" id="nf-delivery-type">
@@ -703,8 +705,8 @@ a{text-decoration:none;color:inherit}
     <div class="success-icon">
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h2>Your capsule is sealed 🔒</h2>
-    <p>We'll keep it safe and deliver it exactly when you asked. Until then — go live your life.</p>
+    <h2>Your capsule is saved 🔒</h2>
+    <p>It has been added to the capsule inbox. This site still needs an email delivery service before scheduled messages can arrive by email.</p>
     <div class="success-detail" id="successDetail"></div>
     <button class="success-close" onclick="closeSuccess()">Done</button>
   </div>
@@ -750,27 +752,63 @@ function togglePrint() {
   document.getElementById('printBox').classList.toggle('checked', printOn);
 }
 
-function sendCapsule() {
+async function sendCapsule() {
   var letter = document.getElementById('letterText').value.trim();
-  var email = document.getElementById('emailInput').value.trim();
+  var emailInput = document.getElementById('emailInput');
+  var email = emailInput.value.trim();
+  var deliverDate = document.getElementById('deliverDate').value;
+  var sendButton = document.getElementById('sendButton');
+  var sendButtonText = document.getElementById('sendButtonText');
+  var sendError = document.getElementById('sendError');
 
   if(!letter) { alert('Please write your letter first.'); return; }
-  if(!email) { alert('Please enter your email address.'); return; }
-  if(!surpriseOn && !document.getElementById('deliverDate').value) {
+  if(!email || !emailInput.checkValidity()) { alert('Please enter a valid email address.'); return; }
+  if(!surpriseOn && !deliverDate) {
     alert('Please choose a delivery date or turn on Surprise me.'); return;
   }
 
   var deliveryText = surpriseOn
     ? 'Delivery: Surprise — sometime in the next 3 months to 2 years'
-    : 'Delivery: ' + new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    : 'Delivery: ' + new Date(deliverDate + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 
   var printText = printOn ? '\nPrint add-on: $5 — physical letter included' : '';
 
-  document.getElementById('successDetail').innerHTML =
-    'Sending to: <strong>' + email + '</strong><br>' +
-    deliveryText + printText;
+  document.getElementById('nf-email').value = email;
+  document.getElementById('nf-letter').value = letter;
+  document.getElementById('nf-delivery-type').value = surpriseOn ? 'surprise' : 'scheduled';
+  document.getElementById('nf-delivery-date').value = surpriseOn ? 'Random date between 3 months and 2 years' : deliverDate;
+  document.getElementById('nf-print').value = printOn ? 'Yes' : 'No';
 
-  document.getElementById('successOverlay').classList.add('show');
+  sendError.classList.remove('show');
+  sendError.textContent = '';
+  sendButton.disabled = true;
+  sendButtonText.textContent = 'Sealing Capsule...';
+
+  try {
+    var form = document.getElementById('netlifyForm');
+    var response = await fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+
+    if(!response.ok) throw new Error('Submission failed');
+
+    var successDetail = document.getElementById('successDetail');
+    successDetail.textContent = '';
+    successDetail.append('Sending to: ');
+    var emailStrong = document.createElement('strong');
+    emailStrong.textContent = email;
+    successDetail.append(emailStrong, document.createElement('br'), deliveryText + printText);
+
+    document.getElementById('successOverlay').classList.add('show');
+  } catch(error) {
+    sendError.textContent = 'Your capsule was not saved. Please check your connection and try again.';
+    sendError.classList.add('show');
+  } finally {
+    sendButton.disabled = false;
+    sendButtonText.textContent = 'Send My Capsule';
+  }
 }
 
 function closeSuccess() {
@@ -801,22 +839,6 @@ function showMain() {
   document.getElementById('mainPage').classList.remove('hide');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-// Show success if returning from Formspree
-window.addEventListener('load', function() {
-  if(window.location.search.indexOf('success') > -1) {
-    var email = sessionStorage.getItem('capsule_email') || 'your email';
-    var delivery = sessionStorage.getItem('capsule_delivery') || '';
-    var print = sessionStorage.getItem('capsule_print') || 'No';
-    document.getElementById('successDetail').innerHTML =
-      'Sending to: <strong>' + email + '</strong><br>' +
-      'Delivery: ' + delivery + '<br>' +
-      'Print add-on: ' + print;
-    document.getElementById('successOverlay').classList.add('show');
-    sessionStorage.clear();
-    history.replaceState(null, '', window.location.pathname);
-  }
-});
 
 // Set min date to 3 months from today
 var minDate = new Date();
