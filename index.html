@@ -619,10 +619,20 @@ a{text-decoration:none;color:inherit}
       </div>
 
       <!-- SEND BUTTON -->
-      <button class="send-btn" onclick="sendCapsule()">
+      <button class="send-btn" onclick="sendCapsule()" type="button">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Send My Capsule
       </button>
+      
+      <!-- Hidden Formspree form -->
+      <form id="formspreeForm" action="https://formspree.io/f/mzdnlyqj" method="POST" style="display:none">
+        <input type="hidden" name="email" id="nf-email">
+        <input type="hidden" name="letter" id="nf-letter">
+        <input type="hidden" name="delivery_type" id="nf-delivery-type">
+        <input type="hidden" name="delivery_date" id="nf-delivery-date">
+        <input type="hidden" name="print_addon" id="nf-print">
+        <button type="submit" id="nf-submit">Submit</button>
+      </form>
 
       <!-- TRUST -->
       <div class="trust-footer">
@@ -791,6 +801,22 @@ function showMain() {
   document.getElementById('mainPage').classList.remove('hide');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+// Show success if returning from Formspree
+window.addEventListener('load', function() {
+  if(window.location.search.indexOf('success') > -1) {
+    var email = sessionStorage.getItem('capsule_email') || 'your email';
+    var delivery = sessionStorage.getItem('capsule_delivery') || '';
+    var print = sessionStorage.getItem('capsule_print') || 'No';
+    document.getElementById('successDetail').innerHTML =
+      'Sending to: <strong>' + email + '</strong><br>' +
+      'Delivery: ' + delivery + '<br>' +
+      'Print add-on: ' + print;
+    document.getElementById('successOverlay').classList.add('show');
+    sessionStorage.clear();
+    history.replaceState(null, '', window.location.pathname);
+  }
+});
 
 // Set min date to 3 months from today
 var minDate = new Date();
