@@ -788,8 +788,25 @@ function sendCapsule() {
   // Get Uploadcare file links
   var photoWidget = uploadcare.Widget('#photo-uploader');
   var videoWidget = uploadcare.Widget('#video-uploader');
-  var photoLinks = photoWidget.value() ? photoWidget.value().cdnUrl : 'No photos';
-  var videoLinks = videoWidget.value() ? videoWidget.value().cdnUrl : 'No video';
+  var photoVal = photoWidget.value();
+  var videoVal = videoWidget.value();
+  var photoLinks = 'No photos';
+  var videoLinks = 'No video';
+  if(photoVal) {
+    if(photoVal.files) {
+      // Multiple files — get each URL
+      var urls = [];
+      photoVal.files().forEach(function(file) {
+        file.done(function(info) { urls.push(info.cdnUrl); });
+      });
+      photoLinks = urls.join(' | ') || photoVal.cdnUrl || 'No photos';
+    } else {
+      photoLinks = photoVal.cdnUrl || 'No photos';
+    }
+  }
+  if(videoVal) {
+    videoLinks = videoVal.cdnUrl || 'No video';
+  }
 
   var btn = document.querySelector('.send-btn');
   btn.textContent = 'Sending...';
@@ -820,6 +837,15 @@ function sendCapsule() {
         'Delivery: ' + deliveryText + '<br>' +
         'Print add-on: ' + printText;
       document.getElementById('successOverlay').classList.add('show');
+      // Clear uploadcare widgets
+      uploadcare.Widget('#photo-uploader').value(null);
+      uploadcare.Widget('#video-uploader').value(null);
+      ['ps1','ps2','ps3','ps4'].forEach(function(id){
+        document.getElementById(id).classList.remove('filled');
+      });
+      document.getElementById('vs1').classList.remove('filled');
+      document.getElementById('photo-status').style.display = 'none';
+      document.getElementById('video-status').style.display = 'none';
     } else {
       alert('Something went wrong. Please try again.');
     }
