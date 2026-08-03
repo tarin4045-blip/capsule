@@ -14,491 +14,167 @@
   --ink:#111;
   --gray:#6b6b6b;
   --border:#e5e5e5;
-  --bg:#ffffff;
+  --bg:#f9f9f9;
   --radius:10px;
 }
-body{font-family:'Inter',sans-serif;background:#f9f9f9;color:var(--ink);min-height:100vh}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-.nav{
-  background:var(--orange);
-  padding:0 40px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;top:0;z-index:100;
-}
+.nav{background:var(--orange);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-left{display:flex;align-items:center;gap:16px}
-.nav-logo{
-  font-size:20px;font-weight:700;
-  color:#fff;letter-spacing:-.3px;
-}
-.nav-tagline{
-  font-size:13px;font-style:italic;
-  color:rgba(255,255,255,.75);
-  border-left:1px solid rgba(255,255,255,.3);
-  padding-left:16px;
-}
+.nav-logo{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.3px}
+.nav-tagline{font-size:13px;font-style:italic;color:rgba(255,255,255,.75);border-left:1px solid rgba(255,255,255,.3);padding-left:16px}
 .nav-right{display:flex;align-items:center;gap:8px}
-.nav-btn-outline{
-  background:transparent;
-  border:1.5px solid rgba(255,255,255,.6);
-  border-radius:8px;
-  color:#fff;
-  font-family:'Inter',sans-serif;
-  font-size:13px;font-weight:600;
-  padding:7px 16px;
-  cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  transition:background .2s,border-color .2s;
-}
-.nav-btn-outline:hover{background:rgba(255,255,255,.15);border-color:#fff}
-.nav-btn-solid{
-  background:#fff;
-  border:none;
-  border-radius:8px;
-  color:var(--orange);
-  font-family:'Inter',sans-serif;
-  font-size:13px;font-weight:700;
-  padding:7px 16px;
-  cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  transition:background .2s;
-}
+.nav-btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.6);border-radius:8px;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:7px 16px;cursor:pointer;transition:background .2s}
+.nav-btn-outline:hover{background:rgba(255,255,255,.15)}
+.nav-btn-solid{background:#fff;border:none;border-radius:8px;color:var(--orange);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:7px 16px;cursor:pointer}
 .nav-btn-solid:hover{background:#ffe8df}
-.nav-icon{
-  width:34px;height:34px;
-  border-radius:50%;
-  border:1.5px solid rgba(255,255,255,.4);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  margin-left:4px;
-}
+.nav-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:4px}
 .nav-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* PAGE */
 .page{max-width:1160px;margin:0 auto;padding:40px 24px 80px}
-
 .page-title{font-size:28px;font-weight:700;color:var(--ink);margin-bottom:4px}
 .page-title span{color:var(--orange)}
 .page-sub{font-size:14px;color:var(--gray);margin-bottom:28px}
 
-/* MAIN GRID */
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr 380px;
-  gap:20px;
-  align-items:start;
-}
+/* GRID */
+.main-grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}
 
-/* LEFT PANEL */
-.left-panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* LETTER AREA */
-.letter-wrap{
-  padding:20px 20px 0;
-  border-bottom:1px solid var(--border);
-}
-.letter-textarea{
-  width:100%;
-  min-height:340px;
-  border:none;
-  outline:none;
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  color:var(--ink);
-  line-height:1.75;
-  resize:none;
-  background:transparent;
-}
+/* LEFT */
+.left-panel{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.letter-wrap{padding:20px 20px 0;border-bottom:1px solid var(--border)}
+.letter-textarea{width:100%;min-height:340px;border:none;outline:none;font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);line-height:1.75;resize:none;background:transparent}
 .letter-textarea::placeholder{color:#bbb}
-.word-count{
-  text-align:right;
-  font-size:12px;
-  color:var(--gray);
-  padding:8px 0 12px;
-}
+.word-count{text-align:right;font-size:12px;color:var(--gray);padding:8px 0 12px}
 
 /* MEDIA ROW */
-.media-row{
-  display:flex;
-  align-items:flex-start;
-  gap:32px;
-  padding:18px 20px;
-}
-.media-col{}
-.media-label{
-  font-size:13px;font-weight:600;
-  color:var(--ink);margin-bottom:10px;
-}
+.media-row{display:flex;align-items:flex-start;gap:32px;padding:18px 20px}
+.media-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px}
 .media-label span{font-weight:400;color:var(--gray)}
+.photo-slots{display:flex;gap:8px;flex-wrap:wrap}
 
-.photo-slots{display:flex;gap:8px}
+/* PHOTO SLOT */
 .photo-slot{
   width:60px;height:60px;
   border:1.5px dashed var(--border);
   border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  cursor:pointer;position:relative;
   overflow:hidden;
   transition:border-color .2s,background .2s;
-  background:#fafafa;
-  flex-direction:column;
-  gap:2px;
-}
-.photo-slot input[type=file]{
-  position:absolute;
-  width:1px;height:1px;
-  opacity:0;
-  pointer-events:none;
+  background:#fafafa;gap:2px;
 }
 .photo-slot:hover{border-color:var(--orange);background:var(--orange-light)}
-.photo-slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-slot svg{width:20px;height:20px;stroke:#ccc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.photo-slot svg{width:20px;height:20px;stroke:#ccc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;flex-shrink:0}
 .photo-slot.filled{border-style:solid;border-color:#22c55e;background:#f0fdf4}
 .photo-slot.filled svg{stroke:#22c55e}
-.slot-name{font-size:9px;color:#22c55e;text-align:center;max-width:52px;overflow:hidden;display:none;line-height:1.2}
+.slot-name{font-size:9px;color:#22c55e;text-align:center;width:52px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:none;line-height:1.2;pointer-events:none}
 .photo-slot.filled .slot-name{display:block}
+.uploading-label{font-size:9px;color:var(--orange);display:none;pointer-events:none}
+.photo-slot.uploading .uploading-label{display:block}
+.photo-slot.uploading svg{display:none}
 
-.video-slot{
-  width:60px;height:60px;
-  border:1.5px dashed var(--border);
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  transition:border-color .2s,background .2s;
-  background:#fafafa;
-}
-.video-slot:hover{border-color:var(--orange);background:var(--orange-light)}
-.video-slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.video-slot svg{width:20px;height:20px;stroke:#ccc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.video-slot.filled{border-style:solid;border-color:var(--orange);background:var(--orange-light)}
-.video-slot.filled svg{stroke:var(--orange)}
+/* RIGHT */
+.right-panel{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:18px}
+.field-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
 
-/* RIGHT PANEL */
-.right-panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.field-label{
-  font-size:13px;font-weight:600;
-  color:var(--ink);margin-bottom:8px;
-}
-
-/* DELIVER ON */
-.date-input-wrap{
-  position:relative;
-}
-.date-input-wrap svg{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-  pointer-events:none;
-}
-.date-input-wrap input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:11px 14px 11px 40px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;color:var(--ink);
-  outline:none;
-  transition:border-color .2s;
-  cursor:pointer;
-}
+.date-input-wrap{position:relative}
+.date-input-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.date-input-wrap input{width:100%;border:1px solid var(--border);border-radius:var(--radius);padding:11px 14px 11px 40px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer}
 .date-input-wrap input:focus{border-color:var(--orange)}
 
-/* SURPRISE TOGGLE */
-.surprise-row{
-  display:flex;align-items:center;gap:8px;
-  margin-top:8px;
-}
-.surprise-toggle{
-  width:36px;height:20px;
-  background:var(--border);
-  border-radius:20px;
-  position:relative;
-  cursor:pointer;
-  transition:background .2s;
-  border:none;
-  flex-shrink:0;
-}
+.surprise-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.surprise-toggle{width:36px;height:20px;background:var(--border);border-radius:20px;position:relative;cursor:pointer;transition:background .2s;border:none;flex-shrink:0}
 .surprise-toggle.on{background:var(--orange)}
-.surprise-toggle::after{
-  content:'';
-  position:absolute;
-  top:2px;left:2px;
-  width:16px;height:16px;
-  border-radius:50%;
-  background:#fff;
-  transition:left .2s;
-  box-shadow:0 1px 3px rgba(0,0,0,.2);
-}
+.surprise-toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .surprise-toggle.on::after{left:18px}
 .surprise-label{font-size:13px;color:var(--gray)}
 
-/* DELIVER TO TABS */
 .tab-row{display:flex;gap:8px}
-.tab{
-  flex:1;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:10px 14px;
-  display:flex;align-items:center;gap:8px;
-  cursor:pointer;
-  font-size:13px;font-weight:600;color:var(--gray);
-  transition:all .2s;
-  background:#fff;
-  font-family:'Inter',sans-serif;
-}
+.tab{flex:1;border:1.5px solid var(--border);border-radius:var(--radius);padding:10px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;color:var(--gray);transition:all .2s;background:#fff;font-family:'Inter',sans-serif}
 .tab svg{width:15px;height:15px;stroke:var(--gray);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tab.active{
-  border-color:var(--orange);
-  background:var(--orange);
-  color:#fff;
-}
+.tab.active{border-color:var(--orange);background:var(--orange);color:#fff}
 .tab.active svg{stroke:#fff}
 
-/* EMAIL INPUT */
-.input-wrap{
-  position:relative;
-}
-.input-wrap svg{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-  pointer-events:none;
-}
-.input-wrap input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:11px 14px 11px 40px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;color:var(--ink);
-  outline:none;
-  transition:border-color .2s;
-}
+.input-wrap{position:relative}
+.input-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.input-wrap input{width:100%;border:1px solid var(--border);border-radius:var(--radius);padding:11px 14px 11px 40px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s}
 .input-wrap input:focus{border-color:var(--orange)}
 .input-wrap input::placeholder{color:#bbb}
 
-/* FREE CAPSULE BOX */
-.free-box{
-  background:var(--orange-light);
-  border-radius:var(--radius);
-  padding:14px;
-  display:flex;gap:12px;
-  align-items:flex-start;
-}
-.free-box-icon{font-size:22px;flex-shrink:0;margin-top:2px}
-.free-box h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.free-box p{font-size:12px;color:var(--gray);line-height:1.5}
-
 /* PRINT BOX */
-.print-box{
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:14px;
-  display:flex;gap:12px;
-  align-items:flex-start;
-  cursor:pointer;
-  transition:border-color .2s,background .2s;
-  position:relative;
-}
+.print-box{border:1.5px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
 .print-box:hover{border-color:var(--orange);background:var(--orange-light)}
-.print-box input[type=checkbox]{
-  position:absolute;opacity:0;
-}
 .print-box.checked{border-color:var(--orange);background:var(--orange-light)}
-.print-box-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.print-box-icon svg{width:24px;height:24px;stroke:var(--orange);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .print-box-text h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;display:flex;align-items:center;gap:8px}
-.print-box-text h4 .price-tag{
-  background:var(--orange);color:#fff;
-  font-size:11px;font-weight:700;
-  border-radius:20px;padding:2px 8px;
-}
+.price-tag{background:var(--orange);color:#fff;font-size:11px;font-weight:700;border-radius:20px;padding:2px 8px}
 .print-box-text p{font-size:12px;color:var(--gray);line-height:1.5}
-.print-check{
-  margin-left:auto;
-  width:20px;height:20px;
-  border:2px solid var(--border);
-  border-radius:5px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  transition:all .2s;
-}
-.print-box.checked .print-check{
-  background:var(--orange);border-color:var(--orange);
-}
+.print-check{margin-left:auto;width:20px;height:20px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.print-box.checked .print-check{background:var(--orange);border-color:var(--orange)}
 .print-check svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none}
 .print-box.checked .print-check svg{display:block}
 
 /* SEND BUTTON */
-.send-btn{
-  width:100%;
-  background:var(--orange);
-  color:#fff;
-  border:none;
-  border-radius:var(--radius);
-  padding:14px;
-  font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:700;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:background .2s,transform .1s;
-}
+.send-btn{width:100%;background:var(--orange);color:#fff;border:none;border-radius:var(--radius);padding:14px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .1s}
 .send-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.send-btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
 .send-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
-/* FOOTER TRUST */
-.trust-footer{
-  display:flex;align-items:center;gap:8px;
-  margin-top:8px;
-  font-size:12px;color:var(--gray);
-}
+.trust-footer{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--gray)}
 .trust-footer svg{width:14px;height:14px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-/* PHYSICAL LETTER PAGE */
+/* PHYSICAL PAGE */
 .physical-page{display:none}
 .physical-page.show{display:block}
-.main-page{display:block}
 .main-page.hide{display:none}
-
-.physical-hero{
-  text-align:center;
-  padding:48px 24px 32px;
-  max-width:600px;
-  margin:0 auto;
-}
+.physical-hero{text-align:center;padding:48px 24px 32px;max-width:600px;margin:0 auto}
 .physical-hero h1{font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
 .physical-hero h1 span{color:var(--orange)}
 .physical-hero p{font-size:15px;color:var(--gray);line-height:1.6;margin-bottom:24px}
-
-.physical-steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  max-width:800px;
-  margin:0 auto 32px;
-}
-.physical-step{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:24px;
-  text-align:center;
-}
-.physical-step-num{
-  width:36px;height:36px;
-  border-radius:50%;
-  background:var(--orange);
-  color:#fff;
-  font-size:15px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 12px;
-}
+.physical-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto 32px}
+.physical-step{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center}
+.physical-step-num{width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
 .physical-step h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .physical-step p{font-size:13px;color:var(--gray);line-height:1.5}
-
-.physical-cta{
-  text-align:center;
-  margin-bottom:48px;
-}
-.physical-btn{
-  background:var(--orange);
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  padding:14px 32px;
-  font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:700;
-  cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;
-  transition:background .2s;
-}
+.physical-cta{text-align:center;margin-bottom:48px}
+.physical-btn{background:var(--orange);color:#fff;border:none;border-radius:10px;padding:14px 32px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
 .physical-btn:hover{background:var(--orange-dark)}
-.physical-price{
-  font-size:13px;color:var(--gray);margin-top:10px;
-}
+.physical-price{font-size:13px;color:var(--gray);margin-top:10px}
 
 /* SUCCESS */
-.success-overlay{
-  display:none;
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:200;
-  align-items:center;justify-content:center;
-}
+.success-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center}
 .success-overlay.show{display:flex}
-.success-card{
-  background:#fff;
-  border-radius:16px;
-  padding:48px 40px;
-  max-width:440px;
-  width:90%;
-  text-align:center;
-}
-.success-icon{
-  width:64px;height:64px;
-  border-radius:50%;
-  background:var(--orange-light);
-  border:2px solid var(--orange);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;
-}
+.success-card{background:#fff;border-radius:16px;padding:48px 40px;max-width:440px;width:90%;text-align:center}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--orange-light);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
 .success-icon svg{width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .success-card h2{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px}
 .success-card p{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:24px}
-.success-detail{
-  background:#f9f9f9;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px 18px;
-  font-size:13px;color:var(--ink);
-  line-height:1.7;margin-bottom:20px;
-  text-align:left;
-}
-.success-close{
-  background:var(--orange);color:#fff;
-  border:none;border-radius:8px;
-  padding:11px 24px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;font-weight:600;
-  cursor:pointer;
-}
+.success-detail{background:#f9f9f9;border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:20px;text-align:left}
+.success-close{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:11px 24px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .main-grid{grid-template-columns:1fr}
-  .nav-tagline{display:none}
-  .physical-steps{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .nav{padding:0 16px}
-  .page{padding:24px 16px 60px}
-  .nav-btn-outline span{display:none}
-  .media-row{flex-direction:column;gap:16px}
-}
+/* NETLIFY HIDDEN FORM */
+.netlify-hidden{display:none}
 
-
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.nav-tagline{display:none}.physical-steps{grid-template-columns:1fr}}
+@media(max-width:600px){.nav{padding:0 16px}.page{padding:24px 16px 60px}.media-row{flex-direction:column;gap:16px}}
 </style>
-
 </head>
 <body>
+
+<!-- Netlify form detection -->
+<form name="capsule" netlify netlify-honeypot="bot-field" class="netlify-hidden">
+  <input name="email">
+  <input name="letter">
+  <input name="delivery_type">
+  <input name="delivery_date">
+  <input name="print_addon">
+  <input name="photos">
+  <input name="video">
+</form>
 
 <!-- NAV -->
 <nav class="nav">
@@ -507,12 +183,8 @@ a{text-decoration:none;color:inherit}
     <div class="nav-tagline">We'll deliver it on your timing.</div>
   </div>
   <div class="nav-right">
-    <button class="nav-btn-solid" onclick="showMain()">
-      <span>Write a Capsule</span>
-    </button>
-    <button class="nav-btn-outline" onclick="showPhysical()">
-      Write a Physical Letter
-    </button>
+    <button class="nav-btn-solid" onclick="showMain()">Write a Capsule</button>
+    <button class="nav-btn-outline" onclick="showPhysical()">Write a Physical Letter</button>
     <div class="nav-icon">
       <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </div>
@@ -522,59 +194,55 @@ a{text-decoration:none;color:inherit}
 <!-- MAIN PAGE -->
 <div class="main-page" id="mainPage">
 <div class="page">
-
   <h1 class="page-title">Create your <span>free</span> capsule</h1>
   <p class="page-sub">Write a letter to your future self. We'll deliver it on your timing.</p>
 
   <div class="main-grid">
-
     <!-- LEFT -->
     <div class="left-panel">
       <div class="letter-wrap">
-        <textarea
-          class="letter-textarea"
-          id="letterText"
-          placeholder="Dear Me,"
-          oninput="updateWords()"
-        ></textarea>
+        <textarea class="letter-textarea" id="letterText" placeholder="Dear Me," oninput="updateWords()"></textarea>
         <div class="word-count"><span id="wordCount">0</span> words</div>
       </div>
-
       <div class="media-row">
         <!-- PHOTOS -->
-        <div class="media-col">
+        <div>
           <div class="media-label">Add photos <span>(up to 4)</span></div>
           <div class="photo-slots">
             <label for="pi1" class="photo-slot" id="ps1">
-              <input type="file" id="pi1" accept="image/*" onchange="photoSelected(this,'ps1','pn1')">
+              <input type="file" id="pi1" accept="image/*" onchange="handlePhoto(this,'ps1','pn1')">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span class="uploading-label">...</span>
               <span class="slot-name" id="pn1"></span>
             </label>
             <label for="pi2" class="photo-slot" id="ps2">
-              <input type="file" id="pi2" accept="image/*" onchange="photoSelected(this,'ps2','pn2')">
+              <input type="file" id="pi2" accept="image/*" onchange="handlePhoto(this,'ps2','pn2')">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span class="uploading-label">...</span>
               <span class="slot-name" id="pn2"></span>
             </label>
             <label for="pi3" class="photo-slot" id="ps3">
-              <input type="file" id="pi3" accept="image/*" onchange="photoSelected(this,'ps3','pn3')">
+              <input type="file" id="pi3" accept="image/*" onchange="handlePhoto(this,'ps3','pn3')">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span class="uploading-label">...</span>
               <span class="slot-name" id="pn3"></span>
             </label>
             <label for="pi4" class="photo-slot" id="ps4">
-              <input type="file" id="pi4" accept="image/*" onchange="photoSelected(this,'ps4','pn4')">
+              <input type="file" id="pi4" accept="image/*" onchange="handlePhoto(this,'ps4','pn4')">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span class="uploading-label">...</span>
               <span class="slot-name" id="pn4"></span>
             </label>
           </div>
         </div>
-
         <!-- VIDEO -->
-        <div class="media-col">
+        <div>
           <div class="media-label">Add a video <span>(up to 45s)</span></div>
           <div class="photo-slots">
             <label for="vi1" class="photo-slot" id="vs1">
-              <input type="file" id="vi1" accept="video/*" onchange="videoSelected(this)">
+              <input type="file" id="vi1" accept="video/*" onchange="handleVideo(this)">
               <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              <span class="uploading-label">...</span>
               <span class="slot-name" id="vn1"></span>
             </label>
           </div>
@@ -584,13 +252,12 @@ a{text-decoration:none;color:inherit}
 
     <!-- RIGHT -->
     <div class="right-panel">
-
-      <!-- DELIVER ON -->
+      <!-- DATE -->
       <div>
         <div class="field-label">Deliver on</div>
         <div class="date-input-wrap">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <input type="date" id="deliverDate" placeholder="Choose a custom date">
+          <input type="date" id="deliverDate">
         </div>
         <div class="surprise-row">
           <button class="surprise-toggle" id="surpriseToggle" onclick="toggleSurprise()"></button>
@@ -602,7 +269,7 @@ a{text-decoration:none;color:inherit}
       <div>
         <div class="field-label">Deliver to</div>
         <div class="tab-row">
-          <button class="tab active" id="tabEmail" onclick="selectTab('email')">
+          <button class="tab active">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             My email
           </button>
@@ -618,16 +285,10 @@ a{text-decoration:none;color:inherit}
         </div>
       </div>
 
-
-
-      <!-- PRINT ADD-ON -->
+      <!-- PRINT -->
       <div class="print-box" id="printBox" onclick="togglePrint()">
         <div class="print-box-icon">
-          <svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round">
-            <polyline points="6 9 6 2 18 2 18 9"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         </div>
         <div class="print-box-text">
           <h4>Print this capsule <span class="price-tag">$5</span></h4>
@@ -638,76 +299,53 @@ a{text-decoration:none;color:inherit}
         </div>
       </div>
 
-      <!-- SEND BUTTON -->
-      <button class="send-btn" onclick="sendCapsule()" type="button">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <!-- SEND -->
+      <button class="send-btn" id="sendBtn" onclick="sendCapsule()">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Send My Capsule
       </button>
 
-      <!-- TRUST -->
       <div class="trust-footer">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         Your capsule is private and secure. We'll never share your information.
       </div>
-
     </div>
   </div>
 </div>
 </div>
 
-<!-- PHYSICAL LETTER PAGE -->
+<!-- PHYSICAL PAGE -->
 <div class="physical-page" id="physicalPage">
 <div class="page">
   <div class="physical-hero">
     <h1>Write a <span>physical</span> letter</h1>
     <p>Your words, printed and mailed to you on the date you choose. A real letter. Something you can hold.</p>
   </div>
-
   <div class="physical-steps">
     <div class="physical-step">
       <div class="physical-step-num">1</div>
       <h4>Write your letter</h4>
-      <p>Write to your future self just like a digital capsule — your words, your way.</p>
+      <p>Write to your future self just like a digital capsule.</p>
     </div>
     <div class="physical-step">
       <div class="physical-step-num">2</div>
       <h4>We print and seal it</h4>
-      <p>Your letter is printed on quality paper, sealed in an envelope, and kept safe until your date.</p>
+      <p>Printed on quality paper, sealed in an envelope, kept safe until your date.</p>
     </div>
     <div class="physical-step">
       <div class="physical-step-num">3</div>
       <h4>It arrives in your mailbox</h4>
-      <p>On the date you choose, your letter ships to your door. Open it when you're ready.</p>
+      <p>On the date you choose, your letter ships to your door.</p>
     </div>
   </div>
-
   <div class="physical-cta">
-    <button class="physical-btn" onclick="showMain()">
-      ✉️ Write my physical letter
-    </button>
-    <div class="physical-price">$12 per letter · Ships on your chosen date · Delivered anywhere in the US</div>
+    <button class="physical-btn" onclick="showMain()">✉️ Write my physical letter</button>
+    <div class="physical-price">$12 per letter · Ships on your chosen date · US only</div>
   </div>
 </div>
 </div>
 
-<!-- SUCCESS OVERLAY -->
-<!-- Real Netlify form - hidden but functional -->
-<form 
-  name="capsule" 
-  method="POST" 
-  data-netlify="true"
-  id="netlifyForm"
-  style="display:none"
->
-  <input type="hidden" name="form-name" value="capsule">
-  <input type="hidden" name="email" id="nf-email">
-  <input type="hidden" name="letter" id="nf-letter">
-  <input type="hidden" name="delivery-type" id="nf-delivery-type">
-  <input type="hidden" name="delivery-date" id="nf-delivery-date">
-  <input type="hidden" name="print-addon" id="nf-print">
-  <button type="submit" id="nf-submit">Submit</button>
-</form>
-
+<!-- SUCCESS -->
 <div class="success-overlay" id="successOverlay">
   <div class="success-card">
     <div class="success-icon">
@@ -723,916 +361,83 @@ a{text-decoration:none;color:inherit}
 <script>
 var surpriseOn = false;
 var printOn = false;
-
-function updateWords() {
-  var text = document.getElementById('letterText').value.trim();
-  var words = text === '' ? 0 : text.split(/\s+/).length;
-  document.getElementById('wordCount').textContent = words;
-}
-
-function fillSlot(id, input) {
-  if(input.files && input.files[0]) {
-    document.getElementById(id).classList.add('filled');
-  }
-}
-
-function fillVideo(input) {
-  if(input.files && input.files[0]) {
-    document.getElementById('vs1').classList.add('filled');
-  }
-}
-
-function toggleSurprise() {
-  surpriseOn = !surpriseOn;
-  var toggle = document.getElementById('surpriseToggle');
-  var dateInput = document.getElementById('deliverDate');
-  toggle.classList.toggle('on', surpriseOn);
-  dateInput.disabled = surpriseOn;
-  dateInput.style.opacity = surpriseOn ? '.4' : '1';
-}
-
-function selectTab(type) {
-  document.getElementById('tabEmail').classList.add('active');
-}
-
-function togglePrint() {
-  printOn = !printOn;
-  document.getElementById('printBox').classList.toggle('checked', printOn);
-}
-
-function sendCapsule() {
-  var letter = document.getElementById('letterText').value.trim();
-  var email = document.getElementById('emailInput').value.trim();
-
-  if(!letter) { alert('Please write your letter first.'); return; }
-  if(!email) { alert('Please enter your email address.'); return; }
-  if(!surpriseOn && !document.getElementById('deliverDate').value) {
-    alert('Please choose a delivery date or turn on Surprise me.'); return;
-  }
-
-  var deliveryType = surpriseOn ? 'Surprise' : 'Scheduled';
-  var deliveryDate = surpriseOn ? 'Surprise delivery' : document.getElementById('deliverDate').value;
-  var deliveryText = surpriseOn
-    ? 'Surprise — sometime in the next 3 months to 2 years'
-    : new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-  var printText = printOn ? 'Yes — $5 print add-on' : 'No';
-
-  // Use Cloudinary URLs
-  var photoLinks = photoUrls.length > 0 ? photoUrls.join(' | ') : 'No photos';
-  var videoLinks = videoUrl || 'No video';
-
-  var btn = document.querySelector('.send-btn');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  // Submit to Netlify Forms
-  var formData = new FormData();
-  formData.append('form-name', 'capsule');
-  formData.append('email', email);
-  formData.append('letter', letter);
-  formData.append('delivery_type', deliveryType);
-  formData.append('delivery_date', deliveryDate);
-  formData.append('print_addon', printText);
-  formData.append('photos', photoLinks);
-  formData.append('video', videoLinks);
-
-  fetch('/', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams(formData).toString()
-  })
-  .then(function(response) {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
-    btn.disabled = false;
-    if(response.ok) {
-      document.getElementById('successDetail').innerHTML =
-        'Sending to: <strong>' + email + '</strong><br>' +
-        'Delivery: ' + deliveryText + '<br>' +
-        'Print add-on: ' + printText;
-      document.getElementById('successOverlay').classList.add('show');
-      // Clear file inputs and Cloudinary URLs
-      photoUrls = [];
-      videoUrl = '';
-      ['pi1','pi2','pi3','pi4'].forEach(function(id){
-        var el = document.getElementById(id);
-        if(el) el.value = '';
-      });
-      var vi = document.getElementById('vi1');
-      if(vi) vi.value = '';
-      ['ps1','ps2','ps3','ps4','vs1'].forEach(function(id){
-        var el = document.getElementById(id);
-        if(el) { el.classList.remove('filled'); el.style.opacity='1'; }
-      });
-      ['pn1','pn2','pn3','pn4','vn1'].forEach(function(id){
-        var el = document.getElementById(id);
-        if(el) el.textContent = '';
-      });
-    } else {
-      alert('Something went wrong. Please try again.');
-    }
-  })
-  .catch(function(err) {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
-    btn.disabled = false;
-    alert('Connection error. Please try again.');
-  });
-}
-
-function closeSuccess() {
-  document.getElementById('successOverlay').classList.remove('show');
-  document.getElementById('letterText').value = '';
-  document.getElementById('emailInput').value = '';
-  document.getElementById('deliverDate').value = '';
-  updateWords();
-  ['ps1','ps2','ps3','ps4','vs1'].forEach(function(id){
-    document.getElementById(id).classList.remove('filled');
-  });
-  printOn = false;
-  surpriseOn = false;
-  document.getElementById('printBox').classList.remove('checked');
-  document.getElementById('surpriseToggle').classList.remove('on');
-  document.getElementById('deliverDate').disabled = false;
-  document.getElementById('deliverDate').style.opacity = '1';
-}
-
-function showPhysical() {
-  document.getElementById('mainPage').classList.add('hide');
-  document.getElementById('physicalPage').classList.add('show');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function showMain() {
-  document.getElementById('physicalPage').classList.remove('show');
-  document.getElementById('mainPage').classList.remove('hide');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// Store uploaded photo URLs
 var photoUrls = [];
 var videoUrl = '';
 
-function uploadToCloudinary(file, callback) {
-  var formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', 'ml_default');
-  formData.append('cloud_name', 'x1xn2iom');
-
-  fetch('https://api.cloudinary.com/v1_1/x1xn2iom/auto/upload', {
-    method: 'POST',
-    body: formData
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    if(data.secure_url) {
-      callback(data.secure_url);
-    } else {
-      alert('Upload failed. Please try again.');
-    }
-  })
-  .catch(function() {
-    alert('Upload error. Please check your connection.');
-  });
-}
-
-function photoSelected(input, slotId, nameId) {
-  if(input.files && input.files[0]) {
-    var slot = document.getElementById(slotId);
-    var file = input.files[0];
-    slot.style.opacity = '0.5';
-    document.getElementById(nameId).textContent = '...';
-
-    uploadToCloudinary(file, function(url) {
-      slot.classList.add('filled');
-      slot.style.opacity = '1';
-      var name = file.name;
-      document.getElementById(nameId).textContent = name.length > 8 ? name.substring(0,6)+'..' : name;
-      photoUrls.push(url);
-    });
-  }
-}
-
-function videoSelected(input) {
-  if(input.files && input.files[0]) {
-    var file = input.files[0];
-    var slot = document.getElementById('vs1');
-    slot.style.opacity = '0.5';
-    document.getElementById('vn1').textContent = '...';
-
-    uploadToCloudinary(file, function(url) {
-      slot.classList.add('filled');
-      slot.style.opacity = '1';
-      var name = file.name;
-      document.getElementById('vn1').textContent = name.length > 8 ? name.substring(0,6)+'..' : name;
-      videoUrl = url;
-    });
-  }
-}
-
-// Set min date to 3 months from today
+// Set date limits
 var minDate = new Date();
 minDate.setMonth(minDate.getMonth() + 3);
 document.getElementById('deliverDate').min = minDate.toISOString().split('T')[0];
 var maxDate = new Date();
 maxDate.setFullYear(maxDate.getFullYear() + 2);
 document.getElementById('deliverDate').max = maxDate.toISOString().split('T')[0];
-</script>
-</body>
-</html>  padding:7px 16px;
-  cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  transition:background .2s;
-}
-.nav-btn-solid:hover{background:#ffe8df}
-.nav-icon{
-  width:34px;height:34px;
-  border-radius:50%;
-  border:1.5px solid rgba(255,255,255,.4);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  margin-left:4px;
-}
-.nav-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* PAGE */
-.page{max-width:1160px;margin:0 auto;padding:40px 24px 80px}
-
-.page-title{font-size:28px;font-weight:700;color:var(--ink);margin-bottom:4px}
-.page-title span{color:var(--orange)}
-.page-sub{font-size:14px;color:var(--gray);margin-bottom:28px}
-
-/* MAIN GRID */
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr 380px;
-  gap:20px;
-  align-items:start;
-}
-
-/* LEFT PANEL */
-.left-panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* LETTER AREA */
-.letter-wrap{
-  padding:20px 20px 0;
-  border-bottom:1px solid var(--border);
-}
-.letter-textarea{
-  width:100%;
-  min-height:340px;
-  border:none;
-  outline:none;
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  color:var(--ink);
-  line-height:1.75;
-  resize:none;
-  background:transparent;
-}
-.letter-textarea::placeholder{color:#bbb}
-.word-count{
-  text-align:right;
-  font-size:12px;
-  color:var(--gray);
-  padding:8px 0 12px;
-}
-
-/* MEDIA ROW */
-.media-row{
-  display:flex;
-  align-items:flex-start;
-  gap:32px;
-  padding:18px 20px;
-}
-.media-col{}
-.media-label{
-  font-size:13px;font-weight:600;
-  color:var(--ink);margin-bottom:10px;
-}
-.media-label span{font-weight:400;color:var(--gray)}
-
-.photo-slots{display:flex;gap:8px}
-.photo-slot{
-  width:60px;height:60px;
-  border:1.5px dashed var(--border);
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  transition:border-color .2s,background .2s;
-  background:#fafafa;
-  flex-direction:column;
-  gap:2px;
-}
-.photo-slot input[type=file]{
-  position:absolute;
-  width:1px;height:1px;
-  opacity:0;
-  pointer-events:none;
-}
-.photo-slot:hover{border-color:var(--orange);background:var(--orange-light)}
-.photo-slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-slot svg{width:20px;height:20px;stroke:#ccc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.photo-slot.filled{border-style:solid;border-color:#22c55e;background:#f0fdf4}
-.photo-slot.filled svg{stroke:#22c55e}
-.slot-name{font-size:9px;color:#22c55e;text-align:center;max-width:52px;overflow:hidden;display:none;line-height:1.2}
-.photo-slot.filled .slot-name{display:block}
-
-.video-slot{
-  width:60px;height:60px;
-  border:1.5px dashed var(--border);
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  transition:border-color .2s,background .2s;
-  background:#fafafa;
-}
-.video-slot:hover{border-color:var(--orange);background:var(--orange-light)}
-.video-slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.video-slot svg{width:20px;height:20px;stroke:#ccc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.video-slot.filled{border-style:solid;border-color:var(--orange);background:var(--orange-light)}
-.video-slot.filled svg{stroke:var(--orange)}
-
-/* RIGHT PANEL */
-.right-panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.field-label{
-  font-size:13px;font-weight:600;
-  color:var(--ink);margin-bottom:8px;
-}
-
-/* DELIVER ON */
-.date-input-wrap{
-  position:relative;
-}
-.date-input-wrap svg{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-  pointer-events:none;
-}
-.date-input-wrap input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:11px 14px 11px 40px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;color:var(--ink);
-  outline:none;
-  transition:border-color .2s;
-  cursor:pointer;
-}
-.date-input-wrap input:focus{border-color:var(--orange)}
-
-/* SURPRISE TOGGLE */
-.surprise-row{
-  display:flex;align-items:center;gap:8px;
-  margin-top:8px;
-}
-.surprise-toggle{
-  width:36px;height:20px;
-  background:var(--border);
-  border-radius:20px;
-  position:relative;
-  cursor:pointer;
-  transition:background .2s;
-  border:none;
-  flex-shrink:0;
-}
-.surprise-toggle.on{background:var(--orange)}
-.surprise-toggle::after{
-  content:'';
-  position:absolute;
-  top:2px;left:2px;
-  width:16px;height:16px;
-  border-radius:50%;
-  background:#fff;
-  transition:left .2s;
-  box-shadow:0 1px 3px rgba(0,0,0,.2);
-}
-.surprise-toggle.on::after{left:18px}
-.surprise-label{font-size:13px;color:var(--gray)}
-
-/* DELIVER TO TABS */
-.tab-row{display:flex;gap:8px}
-.tab{
-  flex:1;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:10px 14px;
-  display:flex;align-items:center;gap:8px;
-  cursor:pointer;
-  font-size:13px;font-weight:600;color:var(--gray);
-  transition:all .2s;
-  background:#fff;
-  font-family:'Inter',sans-serif;
-}
-.tab svg{width:15px;height:15px;stroke:var(--gray);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tab.active{
-  border-color:var(--orange);
-  background:var(--orange);
-  color:#fff;
-}
-.tab.active svg{stroke:#fff}
-
-/* EMAIL INPUT */
-.input-wrap{
-  position:relative;
-}
-.input-wrap svg{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-  pointer-events:none;
-}
-.input-wrap input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:11px 14px 11px 40px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;color:var(--ink);
-  outline:none;
-  transition:border-color .2s;
-}
-.input-wrap input:focus{border-color:var(--orange)}
-.input-wrap input::placeholder{color:#bbb}
-
-/* FREE CAPSULE BOX */
-.free-box{
-  background:var(--orange-light);
-  border-radius:var(--radius);
-  padding:14px;
-  display:flex;gap:12px;
-  align-items:flex-start;
-}
-.free-box-icon{font-size:22px;flex-shrink:0;margin-top:2px}
-.free-box h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.free-box p{font-size:12px;color:var(--gray);line-height:1.5}
-
-/* PRINT BOX */
-.print-box{
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:14px;
-  display:flex;gap:12px;
-  align-items:flex-start;
-  cursor:pointer;
-  transition:border-color .2s,background .2s;
-  position:relative;
-}
-.print-box:hover{border-color:var(--orange);background:var(--orange-light)}
-.print-box input[type=checkbox]{
-  position:absolute;opacity:0;
-}
-.print-box.checked{border-color:var(--orange);background:var(--orange-light)}
-.print-box-icon{font-size:22px;flex-shrink:0;margin-top:2px}
-.print-box-text h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;display:flex;align-items:center;gap:8px}
-.print-box-text h4 .price-tag{
-  background:var(--orange);color:#fff;
-  font-size:11px;font-weight:700;
-  border-radius:20px;padding:2px 8px;
-}
-.print-box-text p{font-size:12px;color:var(--gray);line-height:1.5}
-.print-check{
-  margin-left:auto;
-  width:20px;height:20px;
-  border:2px solid var(--border);
-  border-radius:5px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  transition:all .2s;
-}
-.print-box.checked .print-check{
-  background:var(--orange);border-color:var(--orange);
-}
-.print-check svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none}
-.print-box.checked .print-check svg{display:block}
-
-/* SEND BUTTON */
-.send-btn{
-  width:100%;
-  background:var(--orange);
-  color:#fff;
-  border:none;
-  border-radius:var(--radius);
-  padding:14px;
-  font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:700;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:background .2s,transform .1s;
-}
-.send-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}
-.send-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-
-/* FOOTER TRUST */
-.trust-footer{
-  display:flex;align-items:center;gap:8px;
-  margin-top:8px;
-  font-size:12px;color:var(--gray);
-}
-.trust-footer svg{width:14px;height:14px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-
-/* PHYSICAL LETTER PAGE */
-.physical-page{display:none}
-.physical-page.show{display:block}
-.main-page{display:block}
-.main-page.hide{display:none}
-
-.physical-hero{
-  text-align:center;
-  padding:48px 24px 32px;
-  max-width:600px;
-  margin:0 auto;
-}
-.physical-hero h1{font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
-.physical-hero h1 span{color:var(--orange)}
-.physical-hero p{font-size:15px;color:var(--gray);line-height:1.6;margin-bottom:24px}
-
-.physical-steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  max-width:800px;
-  margin:0 auto 32px;
-}
-.physical-step{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:24px;
-  text-align:center;
-}
-.physical-step-num{
-  width:36px;height:36px;
-  border-radius:50%;
-  background:var(--orange);
-  color:#fff;
-  font-size:15px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 12px;
-}
-.physical-step h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
-.physical-step p{font-size:13px;color:var(--gray);line-height:1.5}
-
-.physical-cta{
-  text-align:center;
-  margin-bottom:48px;
-}
-.physical-btn{
-  background:var(--orange);
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  padding:14px 32px;
-  font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:700;
-  cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;
-  transition:background .2s;
-}
-.physical-btn:hover{background:var(--orange-dark)}
-.physical-price{
-  font-size:13px;color:var(--gray);margin-top:10px;
-}
-
-/* SUCCESS */
-.success-overlay{
-  display:none;
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:200;
-  align-items:center;justify-content:center;
-}
-.success-overlay.show{display:flex}
-.success-card{
-  background:#fff;
-  border-radius:16px;
-  padding:48px 40px;
-  max-width:440px;
-  width:90%;
-  text-align:center;
-}
-.success-icon{
-  width:64px;height:64px;
-  border-radius:50%;
-  background:var(--orange-light);
-  border:2px solid var(--orange);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;
-}
-.success-icon svg{width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.success-card h2{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px}
-.success-card p{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:24px}
-.success-detail{
-  background:#f9f9f9;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px 18px;
-  font-size:13px;color:var(--ink);
-  line-height:1.7;margin-bottom:20px;
-  text-align:left;
-}
-.success-close{
-  background:var(--orange);color:#fff;
-  border:none;border-radius:8px;
-  padding:11px 24px;
-  font-family:'Inter',sans-serif;
-  font-size:14px;font-weight:600;
-  cursor:pointer;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .main-grid{grid-template-columns:1fr}
-  .nav-tagline{display:none}
-  .physical-steps{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .nav{padding:0 16px}
-  .page{padding:24px 16px 60px}
-  .nav-btn-outline span{display:none}
-  .media-row{flex-direction:column;gap:16px}
-}
-
-
-</style>
-
-</head>
-<body>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-left">
-    <div class="nav-logo">MyCapsule</div>
-    <div class="nav-tagline">We'll deliver it on your timing.</div>
-  </div>
-  <div class="nav-right">
-    <button class="nav-btn-solid" onclick="showMain()">
-      <span>Write a Capsule</span>
-    </button>
-    <button class="nav-btn-outline" onclick="showPhysical()">
-      Write a Physical Letter
-    </button>
-    <div class="nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </div>
-  </div>
-</nav>
-
-<!-- MAIN PAGE -->
-<div class="main-page" id="mainPage">
-<div class="page">
-
-  <h1 class="page-title">Create your <span>free</span> capsule</h1>
-  <p class="page-sub">Write a letter to your future self. We'll deliver it on your timing.</p>
-
-  <div class="main-grid">
-
-    <!-- LEFT -->
-    <div class="left-panel">
-      <div class="letter-wrap">
-        <textarea
-          class="letter-textarea"
-          id="letterText"
-          placeholder="Dear Me,"
-          oninput="updateWords()"
-        ></textarea>
-        <div class="word-count"><span id="wordCount">0</span> words</div>
-      </div>
-
-      <div class="media-row">
-        <!-- PHOTOS -->
-        <div class="media-col">
-          <div class="media-label">Add photos <span>(up to 4)</span></div>
-          <div class="photo-slots">
-            <label for="pi1" class="photo-slot" id="ps1">
-              <input type="file" id="pi1" accept="image/*" onchange="photoSelected(this,'ps1','pn1')">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-name" id="pn1"></span>
-            </label>
-            <label for="pi2" class="photo-slot" id="ps2">
-              <input type="file" id="pi2" accept="image/*" onchange="photoSelected(this,'ps2','pn2')">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-name" id="pn2"></span>
-            </label>
-            <label for="pi3" class="photo-slot" id="ps3">
-              <input type="file" id="pi3" accept="image/*" onchange="photoSelected(this,'ps3','pn3')">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-name" id="pn3"></span>
-            </label>
-            <label for="pi4" class="photo-slot" id="ps4">
-              <input type="file" id="pi4" accept="image/*" onchange="photoSelected(this,'ps4','pn4')">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-name" id="pn4"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- VIDEO -->
-        <div class="media-col">
-          <div class="media-label">Add a video <span>(up to 45s)</span></div>
-          <div class="photo-slots">
-            <label for="vi1" class="photo-slot" id="vs1">
-              <input type="file" id="vi1" accept="video/*" onchange="videoSelected(this)">
-              <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-              <span class="slot-name" id="vn1"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="right-panel">
-
-      <!-- DELIVER ON -->
-      <div>
-        <div class="field-label">Deliver on</div>
-        <div class="date-input-wrap">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <input type="date" id="deliverDate" placeholder="Choose a custom date">
-        </div>
-        <div class="surprise-row">
-          <button class="surprise-toggle" id="surpriseToggle" onclick="toggleSurprise()"></button>
-          <span class="surprise-label">Surprise me (3 months – 2 years)</span>
-        </div>
-      </div>
-
-      <!-- DELIVER TO -->
-      <div>
-        <div class="field-label">Deliver to</div>
-        <div class="tab-row">
-          <button class="tab active" id="tabEmail" onclick="selectTab('email')">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            My email
-          </button>
-        </div>
-      </div>
-
-      <!-- EMAIL -->
-      <div>
-        <div class="field-label">Email address</div>
-        <div class="input-wrap">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <input type="email" id="emailInput" placeholder="Enter your email address">
-        </div>
-      </div>
-
-
-
-      <!-- PRINT ADD-ON -->
-      <div class="print-box" id="printBox" onclick="togglePrint()">
-        <div class="print-box-icon">
-          <svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round">
-            <polyline points="6 9 6 2 18 2 18 9"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8"/>
-          </svg>
-        </div>
-        <div class="print-box-text">
-          <h4>Print this capsule <span class="price-tag">$5</span></h4>
-          <p>We'll mail you a beautifully printed version of your letter — a physical keepsake to open one day.</p>
-        </div>
-        <div class="print-check" id="printCheck">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-      </div>
-
-      <!-- SEND BUTTON -->
-      <button class="send-btn" onclick="sendCapsule()" type="button">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Send My Capsule
-      </button>
-
-      <!-- TRUST -->
-      <div class="trust-footer">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Your capsule is private and secure. We'll never share your information.
-      </div>
-
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- PHYSICAL LETTER PAGE -->
-<div class="physical-page" id="physicalPage">
-<div class="page">
-  <div class="physical-hero">
-    <h1>Write a <span>physical</span> letter</h1>
-    <p>Your words, printed and mailed to you on the date you choose. A real letter. Something you can hold.</p>
-  </div>
-
-  <div class="physical-steps">
-    <div class="physical-step">
-      <div class="physical-step-num">1</div>
-      <h4>Write your letter</h4>
-      <p>Write to your future self just like a digital capsule — your words, your way.</p>
-    </div>
-    <div class="physical-step">
-      <div class="physical-step-num">2</div>
-      <h4>We print and seal it</h4>
-      <p>Your letter is printed on quality paper, sealed in an envelope, and kept safe until your date.</p>
-    </div>
-    <div class="physical-step">
-      <div class="physical-step-num">3</div>
-      <h4>It arrives in your mailbox</h4>
-      <p>On the date you choose, your letter ships to your door. Open it when you're ready.</p>
-    </div>
-  </div>
-
-  <div class="physical-cta">
-    <button class="physical-btn" onclick="showMain()">
-      ✉️ Write my physical letter
-    </button>
-    <div class="physical-price">$12 per letter · Ships on your chosen date · Delivered anywhere in the US</div>
-  </div>
-</div>
-</div>
-
-<!-- SUCCESS OVERLAY -->
-<!-- Real Netlify form - hidden but functional -->
-<form 
-  name="capsule" 
-  method="POST" 
-  data-netlify="true"
-  id="netlifyForm"
-  style="display:none"
->
-  <input type="hidden" name="form-name" value="capsule">
-  <input type="hidden" name="email" id="nf-email">
-  <input type="hidden" name="letter" id="nf-letter">
-  <input type="hidden" name="delivery-type" id="nf-delivery-type">
-  <input type="hidden" name="delivery-date" id="nf-delivery-date">
-  <input type="hidden" name="print-addon" id="nf-print">
-  <button type="submit" id="nf-submit">Submit</button>
-</form>
-
-<div class="success-overlay" id="successOverlay">
-  <div class="success-card">
-    <div class="success-icon">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2>Your capsule is sealed 🔒</h2>
-    <p>We'll keep it safe and deliver it exactly when you asked. Until then — go live your life.</p>
-    <div class="success-detail" id="successDetail"></div>
-    <button class="success-close" onclick="closeSuccess()">Done</button>
-  </div>
-</div>
-
-<script>
-var surpriseOn = false;
-var printOn = false;
 
 function updateWords() {
   var text = document.getElementById('letterText').value.trim();
-  var words = text === '' ? 0 : text.split(/\s+/).length;
-  document.getElementById('wordCount').textContent = words;
-}
-
-function fillSlot(id, input) {
-  if(input.files && input.files[0]) {
-    document.getElementById(id).classList.add('filled');
-  }
-}
-
-function fillVideo(input) {
-  if(input.files && input.files[0]) {
-    document.getElementById('vs1').classList.add('filled');
-  }
+  document.getElementById('wordCount').textContent = text === '' ? 0 : text.split(/\s+/).length;
 }
 
 function toggleSurprise() {
   surpriseOn = !surpriseOn;
-  var toggle = document.getElementById('surpriseToggle');
-  var dateInput = document.getElementById('deliverDate');
-  toggle.classList.toggle('on', surpriseOn);
-  dateInput.disabled = surpriseOn;
-  dateInput.style.opacity = surpriseOn ? '.4' : '1';
-}
-
-function selectTab(type) {
-  document.getElementById('tabEmail').classList.add('active');
+  document.getElementById('surpriseToggle').classList.toggle('on', surpriseOn);
+  var d = document.getElementById('deliverDate');
+  d.disabled = surpriseOn;
+  d.style.opacity = surpriseOn ? '.4' : '1';
 }
 
 function togglePrint() {
   printOn = !printOn;
   document.getElementById('printBox').classList.toggle('checked', printOn);
+}
+
+function uploadToCloudinary(file, callback) {
+  var fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', 'ml_default');
+  fetch('https://api.cloudinary.com/v1_1/x1xn2iom/auto/upload', {
+    method: 'POST',
+    body: fd
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if(d.secure_url) callback(null, d.secure_url);
+    else callback('Upload failed');
+  })
+  .catch(function(){ callback('Network error'); });
+}
+
+function handlePhoto(input, slotId, nameId) {
+  if(!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var slot = document.getElementById(slotId);
+  slot.classList.add('uploading');
+  slot.classList.remove('filled');
+
+  uploadToCloudinary(file, function(err, url) {
+    slot.classList.remove('uploading');
+    if(err) { alert('Photo upload failed. Please try again.'); return; }
+    slot.classList.add('filled');
+    var n = file.name;
+    document.getElementById(nameId).textContent = n.length > 8 ? n.substring(0,6)+'..' : n;
+    photoUrls.push(url);
+  });
+}
+
+function handleVideo(input) {
+  if(!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var slot = document.getElementById('vs1');
+  slot.classList.add('uploading');
+  slot.classList.remove('filled');
+
+  uploadToCloudinary(file, function(err, url) {
+    slot.classList.remove('uploading');
+    if(err) { alert('Video upload failed. Please try again.'); return; }
+    slot.classList.add('filled');
+    var n = file.name;
+    document.getElementById('vn1').textContent = n.length > 8 ? n.substring(0,6)+'..' : n;
+    videoUrl = url;
+  });
 }
 
 function sendCapsule() {
@@ -1651,63 +456,43 @@ function sendCapsule() {
     ? 'Surprise — sometime in the next 3 months to 2 years'
     : new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
   var printText = printOn ? 'Yes — $5 print add-on' : 'No';
+  var photoText = photoUrls.length > 0 ? photoUrls.join('\n') : 'No photos';
+  var videoText = videoUrl || 'No video';
 
-  // Get selected file names
-  var photoNames = [];
-  ['pi1','pi2','pi3','pi4'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if(el && el.files && el.files[0]) photoNames.push(el.files[0].name);
-  });
-  var photoLinks = photoNames.length > 0 ? photoNames.join(', ') : 'No photos';
-  var vi = document.getElementById('vi1');
-  var videoLinks = (vi && vi.files && vi.files[0]) ? vi.files[0].name : 'No video';
-
-  var btn = document.querySelector('.send-btn');
+  var btn = document.getElementById('sendBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  // Submit to Netlify Forms
-  var formData = new FormData();
-  formData.append('form-name', 'capsule');
-  formData.append('email', email);
-  formData.append('letter', letter);
-  formData.append('delivery_type', deliveryType);
-  formData.append('delivery_date', deliveryDate);
-  formData.append('print_addon', printText);
-  formData.append('photos', photoLinks);
-  formData.append('video', videoLinks);
+  var body = new URLSearchParams();
+  body.append('form-name', 'capsule');
+  body.append('email', email);
+  body.append('letter', letter);
+  body.append('delivery_type', deliveryType);
+  body.append('delivery_date', deliveryDate);
+  body.append('print_addon', printText);
+  body.append('photos', photoText);
+  body.append('video', videoText);
 
   fetch('/', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams(formData).toString()
+    body: body.toString()
   })
-  .then(function(response) {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
+  .then(function(res) {
+    btn.textContent = 'Send My Capsule';
     btn.disabled = false;
-    if(response.ok) {
+    if(res.ok) {
       document.getElementById('successDetail').innerHTML =
         'Sending to: <strong>' + email + '</strong><br>' +
         'Delivery: ' + deliveryText + '<br>' +
         'Print add-on: ' + printText;
       document.getElementById('successOverlay').classList.add('show');
-      // Clear file inputs
-      ['pi1','pi2','pi3','pi4'].forEach(function(id){
-        document.getElementById(id).value = '';
-      });
-      document.getElementById('vi1').value = '';
-      ['ps1','ps2','ps3','ps4','vs1'].forEach(function(id){
-        document.getElementById(id).classList.remove('filled');
-      });
-      ['pn1','pn2','pn3','pn4','vn1'].forEach(function(id){
-        document.getElementById(id).textContent = '';
-      });
     } else {
       alert('Something went wrong. Please try again.');
     }
   })
-  .catch(function(err) {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
+  .catch(function() {
+    btn.textContent = 'Send My Capsule';
     btn.disabled = false;
     alert('Connection error. Please try again.');
   });
@@ -1719,8 +504,19 @@ function closeSuccess() {
   document.getElementById('emailInput').value = '';
   document.getElementById('deliverDate').value = '';
   updateWords();
+  photoUrls = [];
+  videoUrl = '';
+  ['pi1','pi2','pi3','pi4','vi1'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.value = '';
+  });
   ['ps1','ps2','ps3','ps4','vs1'].forEach(function(id){
-    document.getElementById(id).classList.remove('filled');
+    var el = document.getElementById(id);
+    if(el) { el.classList.remove('filled','uploading'); }
+  });
+  ['pn1','pn2','pn3','pn4','vn1'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.textContent = '';
   });
   printOn = false;
   surpriseOn = false;
@@ -1741,31 +537,6 @@ function showMain() {
   document.getElementById('mainPage').classList.remove('hide');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function photoSelected(input, slotId, nameId) {
-  if(input.files && input.files[0]) {
-    var slot = document.getElementById(slotId);
-    slot.classList.add('filled');
-    var name = input.files[0].name;
-    document.getElementById(nameId).textContent = name.length > 8 ? name.substring(0,6)+'..' : name;
-  }
-}
-
-function videoSelected(input) {
-  if(input.files && input.files[0]) {
-    document.getElementById('vs1').classList.add('filled');
-    var name = input.files[0].name;
-    document.getElementById('vn1').textContent = name.length > 8 ? name.substring(0,6)+'..' : name;
-  }
-}
-
-// Set min date to 3 months from today
-var minDate = new Date();
-minDate.setMonth(minDate.getMonth() + 3);
-document.getElementById('deliverDate').min = minDate.toISOString().split('T')[0];
-var maxDate = new Date();
-maxDate.setFullYear(maxDate.getFullYear() + 2);
-document.getElementById('deliverDate').max = maxDate.toISOString().split('T')[0];
 </script>
 </body>
 </html>
