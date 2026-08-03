@@ -483,6 +483,10 @@ a{text-decoration:none;color:inherit}
   .nav-btn-outline span{display:none}
   .media-row{flex-direction:column;gap:16px}
 }
+
+/* Hide Uploadcare default button text and styling */
+.uploadcare-widget { display: none !important; }
+.uploadcare-widget-button { display: none !important; }
 </style>
 <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 <script>UPLOADCARE_PUBLIC_KEY = "6a6fc6be38ac18dd5948";</script>
@@ -581,8 +585,8 @@ a{text-decoration:none;color:inherit}
               <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
             </div>
             <div class="video-text">
-              <h4>Add a video message</h4>
-              <p>Say something to your future self. Max 45 seconds.</p>
+              <h4 id="video-slot-title">Add a video</h4>
+              <p id="video-slot-sub">Tap to upload a short clip</p>
             </div>
           </div>
           <div id="video-status" style="font-size:12px;color:var(--orange);margin-top:8px;display:none">✓ Video uploaded</div>
@@ -790,23 +794,8 @@ function sendCapsule() {
   var videoWidget = uploadcare.Widget('#video-uploader');
   var photoVal = photoWidget.value();
   var videoVal = videoWidget.value();
-  var photoLinks = 'No photos';
-  var videoLinks = 'No video';
-  if(photoVal) {
-    if(photoVal.files) {
-      // Multiple files — get each URL
-      var urls = [];
-      photoVal.files().forEach(function(file) {
-        file.done(function(info) { urls.push(info.cdnUrl); });
-      });
-      photoLinks = urls.join(' | ') || photoVal.cdnUrl || 'No photos';
-    } else {
-      photoLinks = photoVal.cdnUrl || 'No photos';
-    }
-  }
-  if(videoVal) {
-    videoLinks = videoVal.cdnUrl || 'No video';
-  }
+  var photoLinks = photoVal ? (photoVal.cdnUrl || 'No photos') : 'No photos';
+  var videoLinks = videoVal ? (videoVal.cdnUrl || 'No video') : 'No video';
 
   var btn = document.querySelector('.send-btn');
   btn.textContent = 'Sending...';
@@ -892,18 +881,27 @@ document.addEventListener('DOMContentLoaded', function() {
   photoWidget.onChange(function(value) {
     if(value) {
       document.getElementById('photo-status').style.display = 'block';
-      // Fill slots with orange to show uploaded
+      document.getElementById('photo-status').textContent = '✓ Photos ready to send';
       ['ps1','ps2','ps3','ps4'].forEach(function(id){
         document.getElementById(id).classList.add('filled');
+      });
+    } else {
+      document.getElementById('photo-status').style.display = 'none';
+      ['ps1','ps2','ps3','ps4'].forEach(function(id){
+        document.getElementById(id).classList.remove('filled');
       });
     }
   });
   var videoWidget = uploadcare.Widget('#video-uploader');
   videoWidget.onChange(function(value) {
     if(value) {
-      document.getElementById('video-status').style.display = 'block';
       document.getElementById('vs1').classList.add('filled');
-      document.querySelector('#vs1 h4').textContent = 'Video added ✓';
+      document.getElementById('video-slot-title').textContent = 'Video added ✓';
+      document.getElementById('video-slot-sub').textContent = 'Tap to change';
+    } else {
+      document.getElementById('vs1').classList.remove('filled');
+      document.getElementById('video-slot-title').textContent = 'Add a video';
+      document.getElementById('video-slot-sub').textContent = 'Tap to upload a short clip';
     }
   });
 });
