@@ -778,17 +778,60 @@ function sendCapsule() {
     alert('Please choose a delivery date or turn on Surprise me.'); return;
   }
 
+  var deliveryType = surpriseOn ? 'Surprise' : 'Scheduled';
+  var deliveryDate = surpriseOn ? 'Surprise delivery' : document.getElementById('deliverDate').value;
   var deliveryText = surpriseOn
-    ? 'Delivery: Surprise — sometime in the next 3 months to 2 years'
-    : 'Delivery: ' + new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    ? 'Surprise — sometime in the next 3 months to 2 years'
+    : new Date(document.getElementById('deliverDate').value + 'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  var printText = printOn ? 'Yes — $5 print add-on' : 'No';
 
-  var printText = printOn ? '\nPrint add-on: $5 — physical letter included' : '';
+  // Get Uploadcare file links
+  var photoWidget = uploadcare.Widget('#photo-uploader');
+  var videoWidget = uploadcare.Widget('#video-uploader');
+  var photoLinks = photoWidget.value() ? photoWidget.value().cdnUrl : 'No photos';
+  var videoLinks = videoWidget.value() ? videoWidget.value().cdnUrl : 'No video';
 
-  document.getElementById('successDetail').innerHTML =
-    'Sending to: <strong>' + email + '</strong><br>' +
-    deliveryText + printText;
+  var btn = document.querySelector('.send-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
 
-  document.getElementById('successOverlay').classList.add('show');
+  fetch('https://formspree.io/f/mzdnlyqj', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      _replyto: email,
+      email: email,
+      letter: letter,
+      delivery_type: deliveryType,
+      delivery_date: deliveryDate,
+      print_addon: printText,
+      photos: photoLinks,
+      video: videoLinks
+    })
+  })
+  .then(function(response) { return response.json(); })
+  .then(function(data) {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
+    btn.disabled = false;
+    if(data.ok) {
+      document.getElementById('successDetail').innerHTML =
+        'Sending to: <strong>' + email + '</strong><br>' +
+        'Delivery: ' + deliveryText + '<br>' +
+        'Print add-on: ' + printText;
+      document.getElementById('successOverlay').classList.add('show');
+    } else {
+      alert('Something went wrong: ' + (data.error || 'Please try again.'));
+    }
+  })
+  .catch(function(err) {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Send My Capsule';
+    btn.disabled = false;
+    alert('Connection error. Please check your internet and try again.');
+    console.error(err);
+  });
 }
 
 function closeSuccess() {
