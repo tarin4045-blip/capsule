@@ -9,7 +9,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --orange:#E8541A;
-  --orange-light:#FEF0EB; 
+  --orange-light:#FEF0EB;
   --orange-dark:#c94410;
   --ink:#111;
   --gray:#6b6b6b;
@@ -393,7 +393,7 @@ function togglePrint() {
 function uploadToCloudinary(file, callback) {
   var fd = new FormData();
   fd.append('file', file);
-  fd.append('upload_preset', 'ml_default');
+  fd.append('upload_preset', 'mycapsule');
   fetch('https://api.cloudinary.com/v1_1/x1xn2iom/auto/upload', {
     method: 'POST',
     body: fd
