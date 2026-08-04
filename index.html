@@ -317,31 +317,90 @@ a{text-decoration:none;color:inherit}
 <!-- PHYSICAL PAGE -->
 <div class="physical-page" id="physicalPage">
 <div class="page">
-  <div class="physical-hero">
-    <h1>Write a <span>physical</span> letter</h1>
-    <p>Your words, printed and mailed to you on the date you choose. A real letter. Something you can hold.</p>
+
+  <!-- HERO -->
+  <div style="text-align:center;max-width:700px;margin:0 auto 32px">
+    <h1 style="font-size:clamp(28px,4vw,42px);font-weight:700;color:#111;margin-bottom:12px">Write a physical letter</h1>
+    <p style="font-size:16px;color:#6b6b6b;line-height:1.6">Your words, printed and mailed to you on the date you choose.<br>A real letter. Something you can hold.</p>
   </div>
-  <div class="physical-steps">
-    <div class="physical-step">
-      <div class="physical-step-num">1</div>
-      <h4>Write your letter</h4>
-      <p>Write to your future self just like a digital capsule.</p>
+
+  <!-- PHOTO -->
+  <div style="max-width:700px;margin:0 auto 32px;border-radius:16px;overflow:hidden">
+    <img src="https://res.cloudinary.com/x1xn2iom/image/upload/v1785823361/4c35f6b0-d3a8-48f4-89d9-f0571a435da0_bvzckf.png" alt="Physical letter" style="width:100%;height:auto;display:block">
+  </div>
+
+  <!-- PRICE CARD -->
+  <div style="max-width:700px;margin:0 auto 40px;background:#fff;border:1.5px solid #e5e5e5;border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--orange);background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <div style="width:8px;height:8px;border-radius:50%;background:#fff"></div>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#111;margin-bottom:3px">Standard Letter</div>
+        <div style="font-size:13px;color:#6b6b6b">Printed on quality paper and mailed to you on your chosen date.</div>
+      </div>
     </div>
-    <div class="physical-step">
-      <div class="physical-step-num">2</div>
-      <h4>We print and seal it</h4>
-      <p>Printed on quality paper, sealed in an envelope, kept safe until your date.</p>
-    </div>
-    <div class="physical-step">
-      <div class="physical-step-num">3</div>
-      <h4>It arrives in your mailbox</h4>
-      <p>On the date you choose, your letter ships to your door.</p>
+    <div style="font-size:20px;font-weight:700;color:#111;flex-shrink:0">$12</div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="max-width:700px;margin:0 auto 40px;text-align:center">
+    <h2 style="font-size:22px;font-weight:700;color:#111;margin-bottom:32px">How it works</h2>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:start;gap:8px">
+
+      <div style="text-align:center">
+        <div style="width:52px;height:52px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8541A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:4px">1. You write it</div>
+        <div style="font-size:12px;color:#6b6b6b;line-height:1.5">Write your letter to your future self.</div>
+      </div>
+
+      <div style="display:flex;align-items:center;padding-top:20px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div style="text-align:center">
+        <div style="width:52px;height:52px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8541A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:4px">2. You send it to us</div>
+        <div style="font-size:12px;color:#6b6b6b;line-height:1.5">Submit online. We take it from there.</div>
+      </div>
+
+      <div style="display:flex;align-items:center;padding-top:20px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div style="text-align:center">
+        <div style="width:52px;height:52px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8541A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:4px">3. We store it safely</div>
+        <div style="font-size:12px;color:#6b6b6b;line-height:1.5">We print it and keep it safe until your date.</div>
+      </div>
+
+      <div style="display:flex;align-items:center;padding-top:20px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div style="text-align:center">
+        <div style="width:52px;height:52px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8541A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:4px">4. We mail it to you</div>
+        <div style="font-size:12px;color:#6b6b6b;line-height:1.5">On your chosen date, we ship it to your address.</div>
+      </div>
+
     </div>
   </div>
-  <div class="physical-cta">
-    <button class="physical-btn" onclick="showMain()">✉️ Write my physical letter</button>
-    <div class="physical-price">$12 per letter · Ships on your chosen date · US only</div>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin-bottom:60px">
+    <button class="physical-btn" onclick="showMain()" style="width:100%;max-width:700px;padding:16px;font-size:16px">Write My Letter</button>
+    <div style="font-size:13px;color:#6b6b6b;margin-top:10px">Ships anywhere in the U.S.</div>
   </div>
+
 </div>
 </div>
 
