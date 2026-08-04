@@ -397,7 +397,7 @@ a{text-decoration:none;color:inherit}
 
   <!-- CTA -->
   <div style="text-align:center;margin-bottom:60px">
-    <button class="physical-btn" onclick="showMain()" style="width:100%;max-width:700px;padding:16px;font-size:16px">Write My Letter</button>
+    <button class="physical-btn" onclick="showMain()" style="width:100%;max-width:700px;padding:16px;font-size:16px;justify-content:center">Write My Letter</button>
     <div style="font-size:13px;color:#6b6b6b;margin-top:10px">Ships anywhere in the U.S.</div>
   </div>
 
@@ -541,10 +541,11 @@ function sendCapsule() {
     btn.textContent = 'Send My Capsule';
     btn.disabled = false;
     if(res.ok) {
-      document.getElementById('successDetail').innerHTML =
-        'Sending to: <strong>' + email + '</strong><br>' +
-        'Delivery: ' + deliveryText + '<br>' +
-        'Print add-on: ' + printText;
+      var msg = 'Sending to: <strong>' + email + '</strong><br>Delivery: ' + deliveryText;
+      if(printOn) {
+        msg += '<br><br><a href="https://buy.stripe.com/14A5kD5yYbHx3gf0iO9fW01?prefilled_email=' + encodeURIComponent(email) + '" style="display:block;background:#E8541A;color:#fff;padding:14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;text-align:center;margin-top:8px">Complete $5 Print Payment →</a><br><span style="font-size:12px;color:#6b6b6b">Your digital capsule has been saved. Complete payment above to add the printed version.</span>';
+      }
+      document.getElementById('successDetail').innerHTML = msg;
       document.getElementById('successOverlay').classList.add('show');
     } else {
       alert('Something went wrong. Please try again.');
