@@ -445,6 +445,17 @@ var printOn = false;
 var photoUrls = [];
 var videoUrl = '';
 
+// Check if returning from Stripe payment
+(function() {
+  var pending = sessionStorage.getItem('pendingCapsule');
+  if(pending) {
+    var d = JSON.parse(pending);
+    sessionStorage.removeItem('pendingCapsule');
+    // Payment completed — now submit to Netlify
+    submitToNetlify(d.email, d.letter, d.delivery_type, d.delivery_date, d.print_addon, d.photos, d.video, d.ship_name, d.ship_address, d.ship_city, d.ship_state, d.ship_zip, d.delivery_text);
+  }
+})();
+
 // Set date limits
 var minDate = new Date();
 minDate.setMonth(minDate.getMonth() + 3);
