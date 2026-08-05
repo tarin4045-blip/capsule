@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 <title>MyCapsule — We'll deliver it on your timing.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -17,8 +17,8 @@
   --bg:#f9f9f9;
   --radius:10px;
 }
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;touch-action:manipulation}
+body{overflow-x:hidden;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 a{text-decoration:none;color:inherit}
 .nav{background:var(--orange);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-left{display:flex;align-items:center;gap:16px}
@@ -31,7 +31,7 @@ a{text-decoration:none;color:inherit}
 .nav-btn-solid:hover{background:#ffe8df}
 .nav-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:4px}
 .nav-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.page{max-width:1160px;margin:0 auto;padding:40px 24px 80px}
+.page{max-width:1160px;margin:0 auto;padding:40px 24px 80px;overflow-x:hidden}
 .page-title{font-size:28px;font-weight:700;color:var(--ink);margin-bottom:4px}
 .page-title span{color:var(--orange)}
 .page-sub{font-size:14px;color:var(--gray);margin-bottom:28px}
@@ -112,22 +112,45 @@ a{text-decoration:none;color:inherit}
 .netlify-hidden{display:none}
 @media(max-width:900px){.main-grid{grid-template-columns:1fr}.nav-tagline{display:none}.right-panel{border-radius:14px}}
 @media(max-width:600px){
-  .nav{padding:0 12px;gap:8px;flex-wrap:wrap;height:auto;min-height:60px;padding-top:10px;padding-bottom:10px}
-  .nav-left{flex:1;min-width:0}
-  .nav-logo{font-size:17px}
-  .nav-right{gap:6px}
-  .nav-btn-solid,.nav-btn-outline{font-size:11px;padding:6px 10px;white-space:nowrap}
-  .nav-icon{width:30px;height:30px}
-  .page{padding:20px 14px 60px}
+  *{max-width:100%}
+  .nav{
+    padding:10px 12px;
+    height:auto;
+    gap:0;
+  }
+  .nav-left{
+    flex-shrink:0;
+  }
+  .nav-logo{font-size:16px}
+  .nav-right{
+    margin-left:auto;
+    gap:5px;
+  }
+  .nav-btn-solid{font-size:10px;padding:5px 8px;white-space:nowrap}
+  .nav-btn-outline{font-size:10px;padding:5px 8px;white-space:nowrap}
+  .nav-icon{width:28px;height:28px;margin-left:2px}
+  .page{padding:20px 16px 60px}
   .page-title{font-size:22px}
-  .media-row{flex-direction:column;gap:16px}
-  .right-panel{padding:16px}
-  .date-input-wrap input{font-size:16px}
-  .input-wrap input{font-size:16px}
-  #shipName,#shipAddress,#shipCity,#shipState,#shipZip{font-size:16px}
-  .letter-textarea{font-size:16px}
+  .page-sub{font-size:13px}
+  .main-grid{gap:14px}
+  .left-panel{border-radius:12px}
+  .letter-wrap{padding:16px 16px 0}
+  .letter-textarea{font-size:16px;min-height:260px}
+  .media-row{flex-direction:column;gap:16px;padding:14px 16px}
+  .right-panel{padding:16px;border-radius:12px;gap:14px}
+  .date-input-wrap input{font-size:16px;max-width:100%;box-sizing:border-box}
+  .input-wrap input{font-size:16px;max-width:100%;box-sizing:border-box}
   .tab{font-size:12px;padding:8px 10px}
-  .surprise-label{font-size:12px}
+  .surprise-label{font-size:11px}
+  .field-label{font-size:12px}
+  .print-box{padding:12px}
+  .print-box-text h4{font-size:12px}
+  .print-box-text p{font-size:11px}
+  .send-btn{font-size:14px;padding:13px}
+  .trust-footer{font-size:11px}
+  #shippingFields input{font-size:16px !important}
+  #shippingFields > div:last-child{grid-template-columns:1fr 1fr !important}
+  #shipZip{margin-top:8px}
 }
 </style>
 </head>
@@ -283,6 +306,11 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
+// Prevent pinch zoom
+document.addEventListener('gesturestart',function(e){e.preventDefault()});
+document.addEventListener('gesturechange',function(e){e.preventDefault()});
+document.addEventListener('gestureend',function(e){e.preventDefault()});
+
 var surpriseOn=false,printOn=false,photoUrls=[],videoUrl='';
 
 var minDate=new Date();minDate.setMonth(minDate.getMonth()+1);
