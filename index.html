@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>MyCapsule — We'll deliver it on your timing.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +17,7 @@
   --bg:#f9f9f9;
   --radius:10px;
 }
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 a{text-decoration:none;color:inherit}
 .nav{background:var(--orange);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
@@ -109,8 +110,25 @@ a{text-decoration:none;color:inherit}
 .stripe-pay-btn:hover{background:var(--orange-dark)}
 .stripe-note{display:none;font-size:12px;color:var(--gray);margin-bottom:16px;text-align:center}
 .netlify-hidden{display:none}
-@media(max-width:900px){.main-grid{grid-template-columns:1fr}.nav-tagline{display:none}}
-@media(max-width:600px){.nav{padding:0 16px}.page{padding:24px 16px 60px}.media-row{flex-direction:column;gap:16px}}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.nav-tagline{display:none}.right-panel{border-radius:14px}}
+@media(max-width:600px){
+  .nav{padding:0 12px;gap:8px;flex-wrap:wrap;height:auto;min-height:60px;padding-top:10px;padding-bottom:10px}
+  .nav-left{flex:1;min-width:0}
+  .nav-logo{font-size:17px}
+  .nav-right{gap:6px}
+  .nav-btn-solid,.nav-btn-outline{font-size:11px;padding:6px 10px;white-space:nowrap}
+  .nav-icon{width:30px;height:30px}
+  .page{padding:20px 14px 60px}
+  .page-title{font-size:22px}
+  .media-row{flex-direction:column;gap:16px}
+  .right-panel{padding:16px}
+  .date-input-wrap input{font-size:16px}
+  .input-wrap input{font-size:16px}
+  #shipName,#shipAddress,#shipCity,#shipState,#shipZip{font-size:16px}
+  .letter-textarea{font-size:16px}
+  .tab{font-size:12px;padding:8px 10px}
+  .surprise-label{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -171,7 +189,7 @@ a{text-decoration:none;color:inherit}
         </div>
         <div class="surprise-row">
           <button class="surprise-toggle" id="surpriseToggle" onclick="toggleSurprise()"></button>
-          <span class="surprise-label">Surprise me (3 months – 2 years)</span>
+          <span class="surprise-label">Surprise me (1 month – 10 years)</span>
         </div>
       </div>
       <div>
@@ -267,9 +285,9 @@ a{text-decoration:none;color:inherit}
 <script>
 var surpriseOn=false,printOn=false,photoUrls=[],videoUrl='';
 
-var minDate=new Date();minDate.setMonth(minDate.getMonth()+3);
+var minDate=new Date();minDate.setMonth(minDate.getMonth()+1);
 document.getElementById('deliverDate').min=minDate.toISOString().split('T')[0];
-var maxDate=new Date();maxDate.setFullYear(maxDate.getFullYear()+2);
+var maxDate=new Date();maxDate.setFullYear(maxDate.getFullYear()+10);
 document.getElementById('deliverDate').max=maxDate.toISOString().split('T')[0];
 
 function updateWords(){var t=document.getElementById('letterText').value.trim();document.getElementById('wordCount').textContent=t===''?0:t.split(/\s+/).length}
@@ -305,7 +323,7 @@ function sendCapsule(){
 
   var deliveryType=surpriseOn?'Surprise':'Scheduled';
   var deliveryDate=surpriseOn?'Surprise delivery':document.getElementById('deliverDate').value;
-  var deliveryText=surpriseOn?'Surprise — sometime in the next 3 months to 2 years':new Date(document.getElementById('deliverDate').value+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  var deliveryText=surpriseOn?'Surprise — sometime in the next 1 month to 10 years':new Date(document.getElementById('deliverDate').value+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
   var printText=printOn?'Yes — $5 print add-on':'No';
   var photoText=photoUrls.length>0?photoUrls.join('\n'):'No photos';
   var videoText=videoUrl||'No video';
