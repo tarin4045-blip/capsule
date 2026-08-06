@@ -61,6 +61,22 @@ a{text-decoration:none;color:inherit}
 .date-input-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--gray);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .date-input-wrap input{width:100%;border:1px solid var(--border);border-radius:var(--radius);padding:11px 14px 11px 40px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer}
 .date-input-wrap input:focus{border-color:var(--orange)}
+.quick-dates{display:flex;gap:6px;margin-top:8px}
+.quick-date-btn{
+  flex:1;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:8px;
+  padding:8px 6px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  color:var(--gray);
+  cursor:pointer;
+  transition:all .2s;
+}
+.quick-date-btn:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-light)}
+.quick-date-btn.active{border-color:var(--orange);background:var(--orange);color:#fff}
 .surprise-row{display:flex;align-items:center;gap:8px;margin-top:8px}
 .surprise-toggle{width:36px;height:20px;background:var(--border);border-radius:20px;position:relative;cursor:pointer;transition:background .2s;border:none;flex-shrink:0}
 .surprise-toggle.on{background:var(--orange)}
@@ -211,6 +227,11 @@ a{text-decoration:none;color:inherit}
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <input type="date" id="deliverDate">
         </div>
+        <div class="quick-dates">
+          <button class="quick-date-btn" onclick="setQuickDate(3)" type="button">3 years</button>
+          <button class="quick-date-btn" onclick="setQuickDate(5)" type="button">5 years</button>
+          <button class="quick-date-btn" onclick="setQuickDate(10)" type="button">10 years</button>
+        </div>
         <div class="surprise-row">
           <button class="surprise-toggle" id="surpriseToggle" onclick="toggleSurprise()"></button>
           <span class="surprise-label">Surprise me (1 month – 10 years)</span>
@@ -320,7 +341,22 @@ var maxDate=new Date();maxDate.setFullYear(maxDate.getFullYear()+10);
 document.getElementById('deliverDate').max=maxDate.toISOString().split('T')[0];
 
 function updateWords(){var t=document.getElementById('letterText').value.trim();document.getElementById('wordCount').textContent=t===''?0:t.split(/\s+/).length}
-function toggleSurprise(){surpriseOn=!surpriseOn;document.getElementById('surpriseToggle').classList.toggle('on',surpriseOn);var d=document.getElementById('deliverDate');d.disabled=surpriseOn;d.style.opacity=surpriseOn?'.4':'1'}
+function toggleSurprise(){surpriseOn=!surpriseOn;document.getElementById('surpriseToggle').classList.toggle('on',surpriseOn);var d=document.getElementById('deliverDate');d.disabled=surpriseOn;d.style.opacity=surpriseOn?'.4':'1';
+  // Clear active quick date buttons
+  document.querySelectorAll('.quick-date-btn').forEach(function(b){b.classList.remove('active')});
+}
+
+function setQuickDate(years){
+  var d=new Date();
+  d.setFullYear(d.getFullYear()+years);
+  var iso=d.toISOString().split('T')[0];
+  document.getElementById('deliverDate').value=iso;
+  // Turn off surprise if on
+  if(surpriseOn){toggleSurprise()}
+  // Mark active button
+  document.querySelectorAll('.quick-date-btn').forEach(function(b){b.classList.remove('active')});
+  event.target.classList.add('active');
+}
 function togglePrint(){
   printOn=!printOn;
   document.getElementById('printBox').classList.toggle('checked',printOn);
